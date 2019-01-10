@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190109225534) do
+ActiveRecord::Schema.define(version: 20190110002733) do
+
+  create_table "grocery_items", force: :cascade do |t|
+    t.string "content"
+    t.integer "grocery_list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grocery_list_id"], name: "index_grocery_items_on_grocery_list_id"
+  end
+
+  create_table "grocery_lists", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
