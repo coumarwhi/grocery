@@ -10,8 +10,9 @@
 <div id="grocery_items_wrapper">
  <%= render @grocery_list.grocery_items %>
  <div id="form">
-  <%= render "grocery_items/form" %>
  </div>
 </div>
+<%= render "grocery_items/form" %>
+
 <%= link_to 'Edit', edit_grocery_list_path(@grocery_list) %> |
 <%= link_to 'Back', grocery_lists_path %>

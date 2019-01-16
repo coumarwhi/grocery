@@ -25,6 +25,7 @@ class GroceryListsController < ApplicationController
   # POST /grocery_lists.json
   def create
     @grocery_list = GroceryList.new(grocery_list_params)
+    @grocery_list.user = current_user
 
     respond_to do |format|
       if @grocery_list.save

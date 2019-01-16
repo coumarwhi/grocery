@@ -1,2 +1,12 @@
-<p><%= grocery_item.content %></p>
-<%= link_to "Delete", grocery_list_grocery_item_path(@grocery_list, grocery_item.id), method: :delete %>
+<div class="row clearfix">
+  <div class="form-check">
+    <%= check_box_tag grocery_item.content, nil, grocery_item.completed, data: {id: grocery_item.id}, class: 'mark_complete form-check-input' %>
+    <label class="form-check-label">
+      <%= grocery_item.content %>
+    </label>
+    <%= link_to "Delete", grocery_list_grocery_item_path(@grocery_list, grocery_item.id), method: :delete %>
+  </div>
+</div>
+
+
+
