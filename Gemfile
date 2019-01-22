@@ -59,3 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro', '1.0' 
+gem 'action-cable-testing'
+gem 'factory_bot_rails'

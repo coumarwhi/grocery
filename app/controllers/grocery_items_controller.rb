@@ -35,7 +35,7 @@ class GroceryItemsController < ApplicationController
   end 
 
   def grocery_item_params
-    params[:grocery_item].permit(:content, :completed)
+    params.require(:grocery_item).permit(:content, :completed)
   end 
 
   def set_grocery_item

@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "GroceryLists", type: :request do
-  describe "GET /grocery_lists" do
-    it "works! (now write some real specs)" do
-      get grocery_lists_path
-      expect(response).to have_http_status(200)
-    end
-  end
+
+  describe "POST create" do
+    it "creates new list and redirects to list" do
+      grocery_list = create(:grocery_list)
+      user = create(:user)
+      sign_in user
+
+      post grocery_lists_path, params: {grocery_list: {title: 'aa', description: 'aaaa'}}
+
+    end  
+  end 
 end
