@@ -3,7 +3,10 @@
 ## Grocery Project 
 Grocery list web-application that allows real-time sharing by multiple people. Users can create/update/delete lists, add items, delete items, and mark items as complete/incomplete.
 
+## Usage
 https://morning-dawn-30677.herokuapp.com/  
+* sign up with email and password
+
 
 ## Technical 
 * I chose to use Ruby on Rails with Action Cable. Deployed using Heroku. 
