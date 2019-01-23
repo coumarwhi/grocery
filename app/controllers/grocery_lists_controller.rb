@@ -28,17 +28,17 @@ class GroceryListsController < ApplicationController
     end
   end
 
-  # def update
-  #   respond_to do |format|
-  #     if @grocery_list.update(grocery_list_params)
-  #       format.html { redirect_to @grocery_list, notice: 'Grocery list was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @grocery_list }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @grocery_list.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @grocery_list.update(grocery_list_params)
+        format.html { redirect_to @grocery_list, notice: 'Grocery list was successfully updated.' }
+        format.json { render :show, status: :ok, location: @grocery_list }
+      else
+        format.html { render :edit }
+        format.json { render json: @grocery_list.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
     @grocery_list.destroy

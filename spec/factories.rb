@@ -8,4 +8,8 @@ FactoryBot.define do
     email { "fake@fake.com" }
     password { "password" }
   end 
+
+  factory :grocery_item do
+    content { 'fakeitem' }
+  end
 end 
