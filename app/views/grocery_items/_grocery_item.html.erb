@@ -4,7 +4,8 @@
     <label class="form-check-label">
       <%= grocery_item.content %>
     </label>
-    <%= link_to "Delete", grocery_list_grocery_item_path(@grocery_list, grocery_item.id), method: :delete %>
+    <%= link_to "Delete", grocery_list_grocery_item_path(@grocery_list.id, grocery_item.id), method: :delete %>
+    <%= link_to 'Edit', edit_grocery_list_grocery_item_path(@grocery_list.id, grocery_item.id) %> |
   </div>
 </div>
 

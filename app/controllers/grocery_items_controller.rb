@@ -17,6 +17,19 @@ class GroceryItemsController < ApplicationController
     redirect_to @grocery_list 
    end
 
+   def update
+    @grocery_item = GroceryItem.find(params[:id])
+    @grocery_item.assign_attributes(grocery_item_params)
+      if @grocery_item.save
+        ActionCable.server.broadcast("grocery_list_#{@grocery_list.id}_channel", id: @grocery_item.id, content: @grocery_item.content, type: "update")
+        redirect_to [@grocery_list]
+      end 
+   end 
+
+   def edit
+    @grocery_item = GroceryItem.find(params[:id])
+   end 
+
    def complete
     @grocery_item = GroceryItem.find(params[:id])
     @grocery_item.toggle(:completed).save

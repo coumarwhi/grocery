@@ -3,6 +3,8 @@ App.groceryChannel = App.cable.subscriptions.create({ channel: "GroceryListsChan
   received(data) {
     if (data["type"] == "create") {
       return this.appendItem(data);
+    } else if (data["type"] == "update") {
+      return this.updateItem(data);
     } else if (data["type"] == "destroy") {
       return this.deleteItem(data);
     } else if (data["type"] == "complete" || data["type"] == "incomplete") {
@@ -22,6 +24,20 @@ App.groceryChannel = App.cable.subscriptions.create({ channel: "GroceryListsChan
     return wrapper;
   },
 
+  updateItem(data) {
+    $('input[type="checkbox"][data-id="' + data["id"] + '"]').parent().remove()
+    const html = this.createItem(data);
+    var wrapper = $("#grocery_items_wrapper").append(html);
+    $(wrapper).children().last().change(function() {
+      $.ajax({
+        type: "PATCH",
+        url: "/grocery_lists/" + location.pathname.split("/").pop() + "/grocery_items/" + data["id"] + "/complete"
+      })
+    });
+    return wrapper;
+  },
+
+
   createItem(data) {
     return `
     <div class="row clearfix">
@@ -31,6 +47,7 @@ App.groceryChannel = App.cable.subscriptions.create({ channel: "GroceryListsChan
           ${data["content"]}
         </label>
         <a rel="nofollow" data-method="delete" href="/grocery_lists/${location.pathname.split("/").pop()}/grocery_items/${data["id"]}">Delete</a>
+        <a rel="nofollow" href="/grocery_lists/${location.pathname.split("/").pop()}/grocery_items/${data["id"]}/edit">Edit</a>
       </div>
     </div>
 `
@@ -47,7 +64,7 @@ App.groceryChannel = App.cable.subscriptions.create({ channel: "GroceryListsChan
 
   deleteItem(data) {
     $('input[type="checkbox"][data-id="' + data["id"] + '"]').parent().remove()
-  },
+  }, // results in $('input[type="checkbox"][data-id="1"]') or whatever the id is
 
 
   connected() {
