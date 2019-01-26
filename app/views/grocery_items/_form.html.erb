@@ -1,6 +1,12 @@
-<%= form_for([@grocery_list, @grocery_list.grocery_items.build]) do |f| %>
- <%= f.text_field :content, placeholder: "New Groceries" %>
- <%= f.submit %>
-<% end %>
+<div class="col-4 pl-0 mt-2 mb-2">
+  <%= form_for([@grocery_list, @grocery_list.grocery_items.build]) do |f| %>
+  <div class="input-group">
+    <%= f.text_field :content, placeholder: "New Groceries", class: "form-control" %>
+    <div class="input-group-append">
+      <%= f.submit 'Add Item', class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
 

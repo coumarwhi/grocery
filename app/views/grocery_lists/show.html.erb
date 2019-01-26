@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Title:</strong>
+  <% unless notice.blank? %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %> 
+<h4>
   <%= @grocery_list.title %>
-</p>
+</h4>
 <p>
-  <strong>Description:</strong>
   <%= @grocery_list.description %>
 </p>
 <div id="grocery_items_wrapper">
@@ -14,5 +14,5 @@
 </div>
 <%= render "grocery_items/form" %>
 
-<%= link_to 'Edit', edit_grocery_list_path(@grocery_list) %> |
+<%= link_to 'Edit', edit_grocery_list_path(@grocery_list) %> 
 <%= link_to 'Back', grocery_lists_path %>

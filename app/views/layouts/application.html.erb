@@ -11,9 +11,11 @@
 
   <body>
     <div class="container">
-      <ul class="nav nav-tabs">
-        <li><%= link_to "Lists", grocery_lists_path %></li>
-      </ul>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+          <li><%= link_to "Lists", grocery_lists_path %></li>
+        </ul>
+      </nav>
       <%= yield %>
     </div>
   </body>
