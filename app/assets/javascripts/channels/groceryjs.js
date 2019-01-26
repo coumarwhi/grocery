@@ -64,7 +64,7 @@ App.groceryChannel = App.cable.subscriptions.create({ channel: "GroceryListsChan
 
   deleteItem(data) {
     $('input[type="checkbox"][data-id="' + data["id"] + '"]').parent().remove()
-  }, // results in $('input[type="checkbox"][data-id="1"]') or whatever the id is
+  }, 
 
 
   connected() {
